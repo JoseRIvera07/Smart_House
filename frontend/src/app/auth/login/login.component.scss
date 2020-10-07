@@ -1,0 +1,16 @@
+img{
+  position: absolute;
+}
+
+.container {
+  position: relative;
+  height: 900px;
+}
+.card{
+  width: 545px;
+}
+.card-container {
+  position: relative;
+  top: 350px;
+  box-shadow: 10px 10px 5px grey;
+}

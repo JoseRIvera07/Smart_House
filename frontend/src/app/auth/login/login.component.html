@@ -1,0 +1,32 @@
+<img src="../../assets/bg.png" class="img-fluid" alt="Responsive image">
+
+<div class="container">
+  <div class="row ">
+    <div class="col align-self-start"></div>
+    <div class="col align-self-center"></div>
+    <div class="col align-self-end">
+      <div class="card-container">
+        <div class="card">
+          <h2 class="card-header align-text-center">iHome Smart Control</h2>
+          <div class="card-body">
+            <div class="row">
+              <div class="col align-self-center">
+                <label>Username: </label>
+                <input [(ngModel)]="username" type="text" name="user" required>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col align-self-center">
+                <label>Password: </label>
+                <input [(ngModel)]="password" type="password" name="password" required>
+              </div>
+            </div>
+            <div class="row">
+              <button class="btn btn-primary" (click)="logIn()">Sign In</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

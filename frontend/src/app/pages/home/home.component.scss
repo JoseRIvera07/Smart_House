@@ -1,0 +1,64 @@
+svg {
+  width: 100%;
+}
+
+.room-selector{
+  height: 300px;
+}
+
+.stroke-pattern {
+  fill: none;
+  stroke: #bdc4cd;
+  stroke-miterlimit: 10;
+  opacity: 0.1;
+  stroke-width: 1px;
+}
+
+.stroked-element {
+  stroke-width: 4px;
+  stroke: #bdc4cd;
+  stroke-miterlimit: 10;
+}
+
+.room-border {
+  stroke-width: 4px;
+  stroke: #bdc4cd;
+  stroke-miterlimit: 10;
+  fill: none;
+}
+
+.room-bg {
+  fill: rgb(39, 33, 70);
+  stroke: transparent;
+  cursor: pointer;
+  stroke-width: 4px;
+}
+
+.room-bg-border-grad {
+  fill: none;
+  stroke: none;
+  stroke-width: 4px;
+}
+
+.room-text {
+  cursor: pointer;
+  user-select: none;
+  pointer-events: none;
+  fill: rgb(92, 77, 107);
+}
+
+.selected-room {
+  z-index: 40;
+
+  .room-text {
+    fill: rgb(71, 73, 112);
+  }
+  .room-border {
+    stroke: rgb(68, 18, 150);
+  }
+}
+
+.header {
+  border-bottom: none;
+  padding-bottom: 0;
+}

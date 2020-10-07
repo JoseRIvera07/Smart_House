@@ -7,7 +7,7 @@
 }
 
 .image{
-  height:40em; background-size:cover; width:auto;
-  background-image:url('https://img.freepik.com/free-photo/lightbulbs-blue-background-idea-concept_104033-53.jpg?size=626&ext=jpg&ga=GA1.2.1575438770.1600300800');
+  height:auto; background-size:cover; width:auto;
+  background-image:url('../../../assets/back.jpg');/* 'https://img.freepik.com/free-photo/lightbulbs-blue-background-idea-concept_104033-53.jpg?size=626&ext=jpg&ga=GA1.2.1575438770.1600300800'); */
   background-position:50% 50%;
 }

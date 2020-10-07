@@ -26,15 +26,15 @@ export class HomeComponent implements OnInit {
   }
 
   rooms = {
-    'Kitchen': {
+    'Cuarto 1': { //cocina
       class: 'room-off',
       pin: 4,
       x: this.block_size,
       y: this.block_size,
       width: this.block_size * 20,
-      height: this.block_size * 21
+      height: this.block_size * 20
     },
-    'Dinning room': {
+    'Cuarto 2': {
       class: 'room-off',
       pin: 17,
       x: this.block_size,
@@ -42,23 +42,23 @@ export class HomeComponent implements OnInit {
       width: this.block_size * 20,
       height: this.block_size * 20
     },
-    'Living room': {
+    'Sala': {
       class: 'room-off',
       pin: 27,
-      x: this.block_size * 21,
+      x: this.block_size * 22,
       y: this.block_size * 22,
-      width: this.block_size * 42,
+      width: this.block_size * 41,
       height: this.block_size * 20
     },
-    'First room': {
+    'Cocina': {
       class: 'room-off',
       pin: 22,
       x: this.block_size * 22,
       y: this.block_size,
-      width: this.block_size * 20,
+      width: this.block_size * 21,
       height: this.block_size * 20
     },
-    'Second room': {
+    'Comedor': {
       class: 'room-off',
       pin: 10,
       x: this.block_size * 43,
@@ -70,28 +70,28 @@ export class HomeComponent implements OnInit {
 
   doors = {
     14: {
-      x: this.rooms['Kitchen'].x + this.rooms['Kitchen'].width/2 - this.block_size * 2.5,
-      y: this.rooms['Kitchen'].y - this.block_size,
+      x: this.rooms['Comedor'].x + this.rooms['Comedor'].width/2 - this.block_size * 2.5,
+      y: this.rooms['Comedor'].y + this.block_size*20,
       width: this.block_size * 5,
       height: this.block_size
     },
     15: {
-      x: this.rooms['Living room'].x + this.rooms['Living room'].width/2 - this.block_size * 2.5,
-      y: this.rooms['Living room'].y + this.rooms['Living room'].height,
+      x: this.rooms['Sala'].x + this.rooms['Sala'].width/2 - this.block_size * 2.5,
+      y: this.rooms['Sala'].y + this.rooms['Sala'].height,
       width: this.block_size * 5,
       height: this.block_size
     },
     18: {
-      x: this.rooms['First room'].x + this.rooms['First room'].width/2 - this.block_size * 2.5,
-      y: this.rooms['First room'].y + this.rooms['First room'].height,
-      width: this.block_size * 5,
-      height: this.block_size
+      x: this.rooms['Cuarto 2'].x + this.rooms['Cuarto 2'].width,
+      y: this.rooms['Cuarto 2'].y + this.rooms['Cuarto 2'].height/2 - this.block_size * 2.5,
+      width: this.block_size,
+      height: this.block_size * 5
     },
     23: {
-      x: this.rooms['Second room'].x + this.rooms['Second room'].width/2 - this.block_size * 2.5,
-      y: this.rooms['Second room'].y + this.rooms['Second room'].height,
-      width: this.block_size * 5,
-      height: this.block_size
+      x: this.rooms['Cuarto 1'].x + this.rooms['Cuarto 1'].width,
+      y: this.rooms['Cuarto 1'].y + this.rooms['Cuarto 1'].height/2 - this.block_size * 2.5,
+      width: this.block_size,
+      height: this.block_size  * 5
     }
   }
   doorPins = [14,15,18,23]
@@ -118,11 +118,23 @@ export class HomeComponent implements OnInit {
 
   setDoorState(pin, state){
     if(state == '1'){
-      this.doors[pin].width = this.block_size * 5;
-      this.doors[pin].height = this.block_size;
+      if(this.doors[pin]==14 || this.doors[pin]==15){
+        this.doors[pin].width = this.block_size * 5;
+        this.doors[pin].height = this.block_size;
+      }
+      else{
+        this.doors[pin].width = this.block_size;
+        this.doors[pin].height = this.block_size * 5;
+      }
     }else{
-      this.doors[pin].width = this.block_size;
-      this.doors[pin].height = this.block_size * 5;
+      if(this.doors[pin]==14 || this.doors[pin]==15){
+        this.doors[pin].width = this.block_size;
+        this.doors[pin].height = this.block_size * 5;
+      }
+      else{
+        this.doors[pin].width = this.block_size * 5;
+        this.doors[pin].height = this.block_size;
+      }
     }
   }
 

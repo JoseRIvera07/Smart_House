@@ -1,7 +1,13 @@
 .room-on{
-  fill: rgb(150,118,72);
+  fill: rgb(243, 247, 7);
 }
 
 .room-off{
-  fill: rgb(40,26,13); 
+  fill: rgb(13, 13, 40); 
+}
+
+.image{
+  height:40em; background-size:cover; width:auto;
+  background-image:url('https://img.freepik.com/free-photo/lightbulbs-blue-background-idea-concept_104033-53.jpg?size=626&ext=jpg&ga=GA1.2.1575438770.1600300800');
+  background-position:50% 50%;
 }

@@ -3,16 +3,15 @@ let app = express();
 let http = require('http').createServer(app);
 let bodyParser = require('body-parser');
 let cors = require('cors');
-let config = require('config');
-app.use(cors()); // Enable request from any server -> npm install cors
-app.options('*', cors()) // include before other routes
+app.use(cors()); 
+app.options('*', cors()) 
 let {exec} = require('child_process');
-//let io = require('socket.io')(http);
+
 const io = require("socket.io")(http, {
     handlePreflightRequest: (req, res) => {
         const headers = {
             "Access-Control-Allow-Headers": "Content-Type, Authorization",
-            "Access-Control-Allow-Origin": req.headers.origin, //or the specific origin you want to give access to,
+            "Access-Control-Allow-Origin": req.headers.origin, 
             "Access-Control-Allow-Credentials": true
         };
         res.writeHead(200, headers);
@@ -25,30 +24,10 @@ global.log4us = require('./src/tools/log4us')();
 app.use(bodyParser.json({limit:"50mb"}));
 app.use(bodyParser.urlencoded({limit: "50mb", extended: true, parameterLimit:50000}));
 
-let corsOptions = {
-	origin: 'http://localhost:4200',
-	credentials: true
-}
-io.origins('*:*') // for latest version
-//app.use(cors(corsOptions));
-//app.options('*',cors());
+io.origins('*:*') 
 
-
-//app.use('/',express.static('./public'));
-
-
-/*
-app.get('/', (req,res) => {
-	res.sendFile(__dirname + '/public/index.html');
-});*/
-
-//cambios
-let handlerModule = require('./src/controllers/handler');
-app.use('/api/', handlerModule);
-
-//cambios
-
-
+let apiRoutes = require("./src/api-routes")
+app.use('/api', apiRoutes)
 
 io.on('connection', socket => {
   console.log('Client Connected');
@@ -92,7 +71,7 @@ io.on('connection', socket => {
   });
 });
 
-let port = config.get("port");
+let port = 3000
 http.listen(port, () =>{
-	global.log4us.print(`Taken port ${port} to serve HTTP server`);
+	global.log4us.print(`Running server on port: ${port}`);
 });

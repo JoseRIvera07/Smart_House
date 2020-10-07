@@ -1,7 +1,5 @@
 #!/bin/bash
 rm -r server 
-cp -r config ./server
-cp -r public ./server
 cp -r src ./server
 cp -r COPYING.MIT ./server
 cp -r package.json ./server

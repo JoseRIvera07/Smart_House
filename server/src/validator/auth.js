@@ -1,11 +1,6 @@
 let sha256 = require('sha256');
-let random = require('randomstring');
-let config = require('config');
-
-
-let user = require('../repository/user');
+let user = require('./user');
 let webToken = require('../tools/webtoken');
-
 
 let expose ={
   exist:null,
@@ -65,7 +60,6 @@ expose.login = (data,cb) => {
             to_return.success = true;
             to_return.data = userInstance;
             to_return.token = tokenResult.token;
-
 
             cb(to_return);
           });

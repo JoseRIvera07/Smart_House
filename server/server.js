@@ -19,8 +19,6 @@ const io = require("socket.io")(http, {
     }
 });
 
-global.log4us = require('./src/tools/log4us')();
-
 app.use(bodyParser.json({limit:"50mb"}));
 app.use(bodyParser.urlencoded({limit: "50mb", extended: true, parameterLimit:50000}));
 
@@ -73,5 +71,5 @@ io.on('connection', socket => {
 
 let port = 3000
 http.listen(port, () =>{
-	global.log4us.print(`Running server on port: ${port}`);
+	console.log(`Running server on port: ${port}`);
 });

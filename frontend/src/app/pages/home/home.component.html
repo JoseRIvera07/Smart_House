@@ -1,6 +1,6 @@
 
 <div class="image">
-
+  <img id="image" src=""/>
   <div style="padding-top: 10%; width: 100%; height: 100%; display: flex; align-items: center; justify-content: center;" >
 
     <svg xmlns="http://www.w3.org/2000/svg" width="700px" height="600px">
@@ -19,8 +19,7 @@
       <g *ngFor = "let door of doors | keyvalue">
         <rect style="fill:rgb(247, 223, 5)" [attr.x]="door.value.x" [attr.y]="door.value.y" [attr.width]="door.value.width" [attr.height]="door.value.height"/>	
       </g>  
-
     </svg>
-
+    
   </div>
 </div>

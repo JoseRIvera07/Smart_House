@@ -144,4 +144,13 @@ export class HomeComponent implements OnInit {
     });
   }
 
+  //-------------------------- NEW METHOD MARY
+  photo(){
+    this.socketService.takePhoto().subscribe((data:string) => {
+      var img = document.getElementById('image')
+      console.log(data)
+      img.setAttribute('src','data:image/jpeg;base64'+ data)
+    });
+  }
+
 }

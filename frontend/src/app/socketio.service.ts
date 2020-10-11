@@ -31,4 +31,15 @@ export class SocketioService {
     });
   }
 
+  takePhoto(){
+    this.socket.emit('photo', "null");
+    return new Observable((subscriber) =>{
+      this.socket.on('image', image => {
+        subscriber.next(image);
+        // Insert it into the DOM
+  
+      });
+    });
+  }
+
 }

@@ -3,11 +3,11 @@ import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 
-import { AuthRoutingModule } from './auth-routing.module';
-import { AuthComponent } from './auth.component';
+import { AuthRoutingModule } from './autent-routing.module';
+import { AutentComponent } from './autent.component';
 import { LoginComponent } from './login/login.component';
 import { ShowHidePasswordModule } from 'ngx-show-hide-password';
-import { AuthService } from '../services/auth.service';
+import { AutentService } from '../services/autent.service';
 
 @NgModule({
   imports: [
@@ -18,11 +18,11 @@ import { AuthService } from '../services/auth.service';
     ShowHidePasswordModule,
   ],
   declarations: [
-    AuthComponent,
+    AutentComponent,
     LoginComponent
   ],
   providers:[
-     AuthService
+     AutentService
   ]
 })
-export class AuthModule {}
+export class AutentModule {}

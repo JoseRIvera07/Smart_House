@@ -2,12 +2,12 @@ import { Component, OnInit } from '@angular/core';
 import { SocketioService } from 'src/app/socketio.service';
 
 @Component({
-  selector: 'app-home',
-  templateUrl: './home.component.html',
-  styleUrls: ['./home.component.css']
+  selector: 'app-smarthome',
+  templateUrl: './smarthome.component.html',
+  styleUrls: ['./smarthome.component.css']
 })
 
-export class HomeComponent implements OnInit {
+export class SmartHomeComponent implements OnInit {
 
   block_size = 10;
 

@@ -4,15 +4,15 @@ import { Routes, RouterModule } from '@angular/router';
 
 const routes: Routes = [
   {
-    path: 'auth',
-    loadChildren: './auth/auth.module#AuthModule'
+    path: 'autent',
+    loadChildren: './autent/autent.module#AutentModule'
   },{
-    path: 'pages',
-    loadChildren: () => import('./pages/pages.module')
-      .then(m => m.PagesModule),
+    path: 'enviroment',
+    loadChildren: () => import('./enviroment/enviroment.module')
+      .then(m => m.EnviromentModule),
   },
-  { path: '', redirectTo: 'auth', pathMatch: 'full' },
-  { path: '**', redirectTo: 'auth' },
+  { path: '', redirectTo: 'autent', pathMatch: 'full' },
+  { path: '**', redirectTo: 'autent' },
 ];
 
 @NgModule({

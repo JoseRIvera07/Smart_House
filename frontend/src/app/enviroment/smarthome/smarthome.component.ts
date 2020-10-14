@@ -12,16 +12,16 @@ export class SmartHomeComponent implements OnInit {
   block_size = 10;
 
   constructor(private socketService: SocketioService) {
-    this.socketService.setUpPins('gpioMain pinMode 4 1');
-    this.socketService.setUpPins('gpioMain pinMode 17 1');
-    this.socketService.setUpPins('gpioMain pinMode 27 1');
-    this.socketService.setUpPins('gpioMain pinMode 22 1');
-    this.socketService.setUpPins('gpioMain pinMode 10 1');
+    this.socketService.setUpPins('gpio pinMode 4 1');
+    this.socketService.setUpPins('gpio pinMode 17 1');
+    this.socketService.setUpPins('gpio pinMode 27 1');
+    this.socketService.setUpPins('gpio pinMode 22 1');
+    this.socketService.setUpPins('gpio pinMode 10 1');
 
-    this.socketService.setUpPins('gpioMain pinMode 14 0');
-    this.socketService.setUpPins('gpioMain pinMode 15 0');
-    this.socketService.setUpPins('gpioMain pinMode 18 0');
-    this.socketService.setUpPins('gpioMain pinMode 23 0');
+    this.socketService.setUpPins('gpio pinMode 14 0');
+    this.socketService.setUpPins('gpio pinMode 15 0');
+    this.socketService.setUpPins('gpio pinMode 18 0');
+    this.socketService.setUpPins('gpio pinMode 23 0');
     
   }
 
@@ -109,10 +109,10 @@ export class SmartHomeComponent implements OnInit {
   roomClick(room){
     if(room.class == 'room-on'){
       room.class = 'room-off';
-      this.socketService.switchLight(`gpioMain digitalWrite ${room.pin} ${0}`);
+      this.socketService.switchLight(`gpio digitalWrite ${room.pin} ${0}`);
     }else{
       room.class = 'room-on';
-      this.socketService.switchLight(`gpioMain digitalWrite ${room.pin} ${1}`);
+      this.socketService.switchLight(`gpio digitalWrite ${room.pin} ${1}`);
     }
   }
 
@@ -139,12 +139,11 @@ export class SmartHomeComponent implements OnInit {
   }
 
   refreshData(pin){
-    this.socketService.verifyDoor(`gpioMain digitalRead ${pin}`).subscribe((data:string) => {
+    this.socketService.verifyDoor(`gpio digitalRead ${pin}`).subscribe((data:string) => {
       this.setDoorState(pin, data);
     });
   }
 
-  //-------------------------- NEW METHOD MARY
   photo(){
     this.socketService.takePhoto().subscribe((data:string) => {
       var img = document.getElementById('image')

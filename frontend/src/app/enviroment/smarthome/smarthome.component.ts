@@ -98,6 +98,7 @@ export class SmartHomeComponent implements OnInit {
       height: this.block_size  * 5
     }
   }
+  tmp=0;
   doorPins = [5,6,13,26]
   ngOnInit(){
     /*var myInterval = null;
@@ -121,6 +122,7 @@ export class SmartHomeComponent implements OnInit {
   }
 
   setDoorState(pin, state){
+    console.log(state);
     if(state == '1'){
       if(this.doors[pin]['val']==13 || this.doors[pin]['val']==26){
         this.doors[pin].width = this.block_size * 5;
@@ -143,9 +145,12 @@ export class SmartHomeComponent implements OnInit {
   }
 
   refresh(){
-    for (let i=0; i<4; i++){
-      setTimeout(() => {this.refreshData(this.doorPins[i]);},2000);
-    } 
+    this.setDoorState(this.doorPins[this.tmp], '1');
+    this.tmp = 0;
+  }
+
+  fetch(){
+    this.tmp = this.tmp + 1;
   }
 
   refreshData(pin){

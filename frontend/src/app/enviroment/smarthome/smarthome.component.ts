@@ -121,6 +121,8 @@ export class SmartHomeComponent implements OnInit {
   }
 
   setDoorState(pin, state){
+    console.log("pin: "+pin.toString());
+    console.log("STATUS: "+state);
     if(state == '1'){
       if(this.doors[pin]['val']==13 || this.doors[pin]['val']==26){
         this.doors[pin].width = this.block_size * 5;
@@ -149,9 +151,7 @@ export class SmartHomeComponent implements OnInit {
   }
 
   refreshData(pin){
-    console.log("pin: "+pin.toString());
     this.socketService.verifyDoor(`gpio digitalRead ${pin}`).subscribe((data:string) => {
-      console.log("STATUS: "+data);
       this.setDoorState(pin, data);
     });
   }

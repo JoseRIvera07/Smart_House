@@ -99,9 +99,9 @@ export class SmartHomeComponent implements OnInit {
     var myInterval = null;
     if (myInterval == null){
       myInterval = setInterval(() => {
-        for (let i=0; i<4; i++){
+        /*for (let i=0; i<4; i++){
           this.refreshData(this.doorPins[i]);
-        }
+        }*/
       }, 5000);
     }
   }
@@ -138,7 +138,14 @@ export class SmartHomeComponent implements OnInit {
     }
   }
 
+  refresh(){
+    for (let i=0; i<4; i++){
+      this.refreshData(this.doorPins[i]);
+    }
+  }
+
   refreshData(pin){
+    console.log("jojojo")
     this.socketService.verifyDoor(`gpio digitalRead ${pin}`).subscribe((data:string) => {
       this.setDoorState(pin, data);
     });

@@ -70,24 +70,28 @@ export class SmartHomeComponent implements OnInit {
 
   doors = {
     5: {
+      val: 5,
       x: this.rooms['Comedor'].x + this.rooms['Comedor'].width/2 - this.block_size * 2.5,
       y: this.rooms['Comedor'].y + this.block_size*20,
       width: this.block_size * 5,
       height: this.block_size
     },
     6: {
+      val: 6,
       x: this.rooms['Sala'].x + this.rooms['Sala'].width/2 - this.block_size * 2.5,
       y: this.rooms['Sala'].y + this.rooms['Sala'].height,
       width: this.block_size * 5,
       height: this.block_size
     },
     13: {
+      val: 13,
       x: this.rooms['Cuarto 2'].x + this.rooms['Cuarto 2'].width,
       y: this.rooms['Cuarto 2'].y + this.rooms['Cuarto 2'].height/2 - this.block_size * 2.5,
       width: this.block_size,
       height: this.block_size * 5
     },
     26: {
+      val: 26,
       x: this.rooms['Cuarto 1'].x + this.rooms['Cuarto 1'].width,
       y: this.rooms['Cuarto 1'].y + this.rooms['Cuarto 1'].height/2 - this.block_size * 2.5,
       width: this.block_size,
@@ -118,20 +122,20 @@ export class SmartHomeComponent implements OnInit {
 
   setDoorState(pin, state){
     if(state == '1'){
-      if(this.doors[pin]==5 || this.doors[pin]==6){
+      if(this.doors[pin]['val']==13 || this.doors[pin]['val']==26){
         this.doors[pin].width = this.block_size * 5;
         this.doors[pin].height = this.block_size;
       }
-      else if(this.doors[pin]==13 || this.doors[pin]==26){
+      else if(this.doors[pin]['val']==5 || this.doors[pin]['val']==6){
         this.doors[pin].width = this.block_size;
         this.doors[pin].height = this.block_size * 5;
       }
     }else{
-      if(this.doors[pin]==5 || this.doors[pin]==6){
+      if(this.doors[pin]['val']==13 || this.doors[pin]['val']==26){
         this.doors[pin].width = this.block_size;
         this.doors[pin].height = this.block_size * 5;
       }
-      else if(this.doors[pin]==13 || this.doors[pin]==26){
+      else if(this.doors[pin]['val']==5 || this.doors[pin]['val']==6){
         this.doors[pin].width = this.block_size * 5;
         this.doors[pin].height = this.block_size;
       }
@@ -141,11 +145,10 @@ export class SmartHomeComponent implements OnInit {
   refresh(){
     for (let i=0; i<4; i++){
       this.refreshData(this.doorPins[i]);
-    }
+    } 
   }
 
   refreshData(pin){
-    console.log("jojojo")
     this.socketService.verifyDoor(`gpio digitalRead ${pin}`).subscribe((data:string) => {
       this.setDoorState(pin, data);
     });

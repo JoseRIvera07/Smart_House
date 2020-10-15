@@ -100,14 +100,14 @@ export class SmartHomeComponent implements OnInit {
   }
   doorPins = [5,6,13,26]
   ngOnInit(){
-    var myInterval = null;
+    /*var myInterval = null;
     if (myInterval == null){
       myInterval = setInterval(() => {
         for (let i=0; i<4; i++){
           this.refreshData(this.doorPins[i]);
         }
       }, 5000);
-    }
+    }*/
   }
 
   roomClick(room){

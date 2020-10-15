@@ -144,13 +144,12 @@ export class SmartHomeComponent implements OnInit {
 
   refresh(){
     for (let i=0; i<4; i++){
-      this.refreshData(this.doorPins[i]);
+      setTimeout(() => {this.refreshData(this.doorPins[i]);},2000);
     } 
   }
 
   refreshData(pin){
     this.socketService.verifyDoor(`gpio digitalRead ${pin}`).subscribe((data:string) => {
-      console.log("PIN: "+pin.toString());
       console.log("STATUS: "+data);
       this.setDoorState(pin, data);
     });

@@ -122,7 +122,7 @@ export class SmartHomeComponent implements OnInit {
         this.doors[pin].width = this.block_size * 5;
         this.doors[pin].height = this.block_size;
       }
-      else{
+      else if(this.doors[pin]==13 || this.doors[pin]==26){
         this.doors[pin].width = this.block_size;
         this.doors[pin].height = this.block_size * 5;
       }
@@ -131,7 +131,7 @@ export class SmartHomeComponent implements OnInit {
         this.doors[pin].width = this.block_size;
         this.doors[pin].height = this.block_size * 5;
       }
-      else{
+      else if(this.doors[pin]==13 || this.doors[pin]==26){
         this.doors[pin].width = this.block_size * 5;
         this.doors[pin].height = this.block_size;
       }

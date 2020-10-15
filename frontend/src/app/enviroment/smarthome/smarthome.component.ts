@@ -103,9 +103,9 @@ export class SmartHomeComponent implements OnInit {
     var myInterval = null;
     if (myInterval == null){
       myInterval = setInterval(() => {
-        /*for (let i=0; i<4; i++){
+        for (let i=0; i<4; i++){
           this.refreshData(this.doorPins[i]);
-        }*/
+        }
       }, 5000);
     }
   }

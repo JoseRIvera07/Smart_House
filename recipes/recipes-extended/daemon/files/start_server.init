@@ -1,0 +1,49 @@
+DAEMON=node 
+NAME=server.init 
+DESC="Nodejs WebServer HTTP" 
+ARGS="/usr/lib/node/server/server.js" 
+ 
+set -e 
+ 
+usage() 
+{ 
+        echo " $DESC: $0 {stop|start|restart}" 
+} 
+  
+ 
+service_start() 
+{ 
+    echo -n "Starting $DESC: $NAME... " 
+    cd /usr/lib/node/server 
+    start-stop-daemon -S -x $DAEMON -- $ARGS & 
+    echo "done." 
+} 
+ 
+ 
+echo "" 
+  
+service_stop() 
+{ 
+    echo -n "Stopping $DESC: $NAME... " 
+    start-stop-daemon -K -x $DAEMON 
+    echo "done." 
+} 
+  
+case $1 in 
+        stop) 
+                service_stop 
+                echo "" 
+        ;; 
+        start) 
+                service_start 
+                echo "" 
+        ;; 
+        restart) 
+                service_stop 
+                service_start 
+                echo "" 
+        ;; 
+        *) 
+                usage 
+esac 
+exit 0

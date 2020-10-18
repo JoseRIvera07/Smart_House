@@ -1,0 +1,25 @@
+# Recipe created by recipetool
+# This is the basis of a recipe and may need further editing in order to be fully functional.
+# (Feel free to remove these comments when editing.)
+
+SUMMARY = "An MP3 decoder for Aurora.js"
+HOMEPAGE = "https://github.com/audiocogs/mp3.js"
+# WARNING: the following LICENSE and LIC_FILES_CHKSUM values are best guesses - it is
+# your responsibility to verify that the values are complete and correct.
+LICENSE = ""
+LIC_FILES_CHKSUM = "file://package.json;md5=ad0f441e35261159471e7c0ab2f870b9"
+
+SRC_URI = " \
+    git://github.com/audiocogs/mp3.js;protocol=https \
+    npmsw://${THISDIR}/${BPN}/npm-shrinkwrap.json \
+    "
+
+# Modify these as desired
+PV = "0.1.0+git${SRCPV}"
+SRCREV = "4c57a308dfafb8a120a0cc5ddbf43c1a010a0f5b"
+
+S = "${WORKDIR}/git"
+
+inherit npm
+
+LICENSE_${PN} = "Unknown"

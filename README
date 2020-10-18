@@ -1,0 +1,50 @@
+Conexion SSH
+
+ssh root@10.42.0.30
+
+
+Cross-toolchain 
+
+-> Ir a libs -> libgpio
+autoreconf  --install 
+mkdir build | cd build
+mkdir usr
+../configure --prefix=/home/andre/Documents/Project1/Smart_House/bibliotecaGPIO/build/usr/ --host=arm-poky-linux-gnuebi
+echo $CC
+make 
+make install 
+
+ sudo cp gpio /media/andre/root/bin/ 
+   cp libgpio.so.0 /media/andre/root/usr/lib
+
+
+
+
+Yocto 
+
+sudo sysctl -n -w fs.inotify.max_user_watches=100000
+. oe-init-source rpi2/
+bitbake recipe 
+bitbake rpi-basic-image
+devtool reset
+devtool build-image
+devtool add
+md5sum 
+
+Imagen 
+
+sudo bmaptool copy rpi-basic-image-raspberrypi2.wic.bz2 /dev/mmcblk0
+
+
+Aplicacion Web
+npm install
+npm start 
+
+
+
+
+
+
+
+
+
